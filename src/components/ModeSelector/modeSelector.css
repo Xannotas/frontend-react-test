@@ -1,0 +1,6 @@
+.mode-selector {
+  text-align: center;
+}
+.mode-selector button + button{
+  margin-left: 20px;
+}
