@@ -1,6 +1,5 @@
 table thead tr th {
   cursor: pointer;
-  min-width: 100px;
 }
 .sort-desc:after {
   content: '';

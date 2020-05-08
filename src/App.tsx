@@ -30,6 +30,10 @@ const App: React.FC = () => {
       const sortedPersons = sort(data, sortedColomnKey) as Person[]
       setPersons(sortedPersons)
       setIsLoading(false)
+    }).catch(() => {
+      alert('Не удалось загрузить данные')
+      setIsLoading(false)
+      setIsModeSelected(false)
     })
   }
 
@@ -69,7 +73,7 @@ const App: React.FC = () => {
           <Pagination
             pageCount={Math.ceil(persons.length / pageSize)}
             currentPageId={pageId}
-            displayPages={10}
+            displayPages={6}
             onPageChanged={handlePageChanged}
           />
         }
