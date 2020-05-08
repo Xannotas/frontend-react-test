@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/frontend-react-test/static/css/main.4fdae525.chunk.css",
-    "main.js": "/frontend-react-test/static/js/main.462345f1.chunk.js",
-    "main.js.map": "/frontend-react-test/static/js/main.462345f1.chunk.js.map",
+    "main.css": "/frontend-react-test/static/css/main.74a5e4ca.chunk.css",
+    "main.js": "/frontend-react-test/static/js/main.bc382896.chunk.js",
+    "main.js.map": "/frontend-react-test/static/js/main.bc382896.chunk.js.map",
     "runtime-main.js": "/frontend-react-test/static/js/runtime-main.ba92a1c2.js",
     "runtime-main.js.map": "/frontend-react-test/static/js/runtime-main.ba92a1c2.js.map",
     "static/css/2.36020323.chunk.css": "/frontend-react-test/static/css/2.36020323.chunk.css",
-    "static/js/2.8b245bf5.chunk.js": "/frontend-react-test/static/js/2.8b245bf5.chunk.js",
-    "static/js/2.8b245bf5.chunk.js.map": "/frontend-react-test/static/js/2.8b245bf5.chunk.js.map",
+    "static/js/2.3e1ee28e.chunk.js": "/frontend-react-test/static/js/2.3e1ee28e.chunk.js",
+    "static/js/2.3e1ee28e.chunk.js.map": "/frontend-react-test/static/js/2.3e1ee28e.chunk.js.map",
     "index.html": "/frontend-react-test/index.html",
-    "precache-manifest.b52af4ed8fc42a49b723f16f7d1e5c0a.js": "/frontend-react-test/precache-manifest.b52af4ed8fc42a49b723f16f7d1e5c0a.js",
+    "precache-manifest.5404a5a7846d96d5f3d91e9591e8f13b.js": "/frontend-react-test/precache-manifest.5404a5a7846d96d5f3d91e9591e8f13b.js",
     "service-worker.js": "/frontend-react-test/service-worker.js",
     "static/css/2.36020323.chunk.css.map": "/frontend-react-test/static/css/2.36020323.chunk.css.map",
-    "static/css/main.4fdae525.chunk.css.map": "/frontend-react-test/static/css/main.4fdae525.chunk.css.map",
-    "static/js/2.8b245bf5.chunk.js.LICENSE.txt": "/frontend-react-test/static/js/2.8b245bf5.chunk.js.LICENSE.txt"
+    "static/css/main.74a5e4ca.chunk.css.map": "/frontend-react-test/static/css/main.74a5e4ca.chunk.css.map",
+    "static/js/2.3e1ee28e.chunk.js.LICENSE.txt": "/frontend-react-test/static/js/2.3e1ee28e.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.ba92a1c2.js",
     "static/css/2.36020323.chunk.css",
-    "static/js/2.8b245bf5.chunk.js",
-    "static/css/main.4fdae525.chunk.css",
-    "static/js/main.462345f1.chunk.js"
+    "static/js/2.3e1ee28e.chunk.js",
+    "static/css/main.74a5e4ca.chunk.css",
+    "static/js/main.bc382896.chunk.js"
   ]
 }
