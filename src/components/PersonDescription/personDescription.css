@@ -1,0 +1,5 @@
+.person-description__description textarea{
+  resize: none;
+  padding: 10px;
+  min-height: 60px;
+}

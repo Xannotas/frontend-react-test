@@ -1,13 +1,17 @@
 import React from 'react'
 import { Person } from '../../../types'
 
-const TableItem: React.FC<Person> = ({ id, firstName, lastName, email, phone }) => {
-  return <tr>
-    <td>{id}</td>
-    <td>{firstName}</td>
-    <td>{lastName}</td>
-    <td>{email}</td>
-    <td>{phone}</td>
+type TableItem = {
+  person: Person,
+  onPersonSelected: (personId: number) => void
+}
+const TableItem: React.FC<TableItem> = ({ person, onPersonSelected }) => {
+  return <tr onClick={()=>onPersonSelected(person.id)}>
+    <td>{person.id}</td>
+    <td>{person.firstName}</td>
+    <td>{person.lastName}</td>
+    <td>{person.email}</td>
+    <td>{person.phone}</td>
   </tr>
 }
 

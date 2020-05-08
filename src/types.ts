@@ -5,12 +5,12 @@ export type Person = {
   email: string,
   phone: string,
   address: {
-    streenAddress: string,
+    streetAddress: string,
     city: string,
     state: string,
     zip: string
   },
-  disctiption: string
+  description: string
 }
 
 export type Column = 'id' | 'firstName' | 'lastName' | 'email' | 'phone'

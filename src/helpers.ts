@@ -11,3 +11,7 @@ export const chunk = (array: any[], size: number) => {
 export const sort = (array: any[], key: Column) => {
   return [...array].sort((a, b) => a[key] < b[key] ? -1 :a[key] > b[key] ? 1 : 0)
 }
+
+export const findIndexById = (array: any[], id: number) => {
+  return array.indexOf(array.find(item => item.id === id))
+}

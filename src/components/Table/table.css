@@ -2,9 +2,15 @@ table thead tr th {
   cursor: pointer;
   width: 23%;
 }
+
 table thead tr th:first-child {
   width: 8%;
 }
+
+table tbody tr td {
+  cursor: pointer;
+}
+
 .sort-desc:after {
   content: '';
   display: inline-block;

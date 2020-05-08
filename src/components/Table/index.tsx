@@ -8,10 +8,11 @@ type Props = {
   persons: Person[],
   sortType: SortType,
   sortedColomnKey: Column,
-  onSort: (columnKey: Column) => void
+  onSort: (columnKey: Column) => void,
+  onPersonSelected: (personId: number) => void
 }
 
-const Table: React.FC<Props> = ({ persons, onSort, sortType, sortedColomnKey}) => {
+const Table: React.FC<Props> = ({ persons, onSort, sortType, sortedColomnKey, onPersonSelected}) => {
   return (
     <table className='highlight responsive-table'>
       <thead>
@@ -25,7 +26,7 @@ const Table: React.FC<Props> = ({ persons, onSort, sortType, sortedColomnKey}) =
       </thead>
       <tbody>
         {persons &&
-          persons.map(person => <TableItem key={person.id + person.phone} {...person} />)
+          persons.map(person => <TableItem key={person.id + person.phone} onPersonSelected={onPersonSelected} person={person}/>)
         }
       </tbody>
     </table>
