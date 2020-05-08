@@ -13,7 +13,7 @@ type Props = {
 
 const Table: React.FC<Props> = ({ persons, onSort, sortType, sortedColomnKey}) => {
   return (
-    <table>
+    <table className='highlight responsive-table'>
       <thead>
         <tr>
           <th className={sortedColomnKey === 'id' ? 'sort-'+sortType : ''} onClick={() => onSort('id')}>Id</th>

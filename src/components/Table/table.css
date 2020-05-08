@@ -1,5 +1,9 @@
 table thead tr th {
   cursor: pointer;
+  width: 23%;
+}
+table thead tr th:first-child {
+  width: 8%;
 }
 .sort-desc:after {
   content: '';

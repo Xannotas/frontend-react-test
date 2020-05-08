@@ -3,11 +3,11 @@ import { Person } from '../../../types'
 
 const TableItem: React.FC<Person> = ({ id, firstName, lastName, email, phone }) => {
   return <tr>
-    <th>{id}</th>
-    <th>{firstName}</th>
-    <th>{lastName}</th>
-    <th>{email}</th>
-    <th>{phone}</th>
+    <td>{id}</td>
+    <td>{firstName}</td>
+    <td>{lastName}</td>
+    <td>{email}</td>
+    <td>{phone}</td>
   </tr>
 }
 
