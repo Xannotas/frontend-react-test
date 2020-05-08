@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import 'materialize-css/dist/css/materialize.min.css'
-import './App.css'
 
-import { Person } from './types';
+import './App.css'
+import { Person, Column, SortType } from './types';
+import { chunk, sort } from './helpers'
+
 import Table from './components/Table';
 import ModeSelector from './components/ModeSelector';
 import Preloader from './components/Preloader';
 import Pagination from './components/Pagination'
-import { chunk } from './helpers'
 
 const App: React.FC = () => {
   const pageSize = 15
@@ -17,6 +18,8 @@ const App: React.FC = () => {
   const [isModeSelected, setIsModeSelected] = useState<boolean>(false)
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [pageId, setPageId] = useState<number>(0)
+  const [sortedColomnKey, setSortedColumnKey] = useState<Column>('id')
+  const [sortType, setSortType] = useState<SortType>('asc')
 
   const displayPersons: Person[] = persons.length > pageSize ? chunk(persons, pageSize)[pageId] : persons
 
@@ -24,13 +27,26 @@ const App: React.FC = () => {
     setIsLoading(true)
     setIsModeSelected(true)
     axios.get(url).then(({ data }) => {
-      setPersons(data as Person[])
+      const sortedPersons = sort(data, sortedColomnKey) as Person[]
+      setPersons(sortedPersons)
       setIsLoading(false)
     })
   }
 
   const handlePageChanged = (selected: number) => {
     setPageId(selected)
+  }
+
+  const handleSortTable = (columnKey: Column) => {
+    if (columnKey === sortedColomnKey) {
+      setPersons([...persons].reverse())
+      setSortType(sortType === 'asc' ? 'desc' : 'asc')
+    } else {
+      setSortedColumnKey(columnKey)
+      setSortType('asc')
+      const sortedPersons = sort(persons, columnKey) as Person[]
+      setPersons(sortedPersons)
+    }
   }
 
   return (
@@ -46,7 +62,7 @@ const App: React.FC = () => {
         }
 
         {persons.length > 0 &&
-          <Table persons={displayPersons} />
+          <Table persons={displayPersons} onSort={handleSortTable} sortType={sortType} sortedColomnKey={sortedColomnKey} />
         }
 
         {persons.length > pageSize &&

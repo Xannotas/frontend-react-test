@@ -12,3 +12,6 @@ export type Person = {
   },
   disctiption: string
 }
+
+export type Column = 'id' | 'firstName' | 'lastName' | 'email' | 'phone'
+export type SortType = 'asc' | 'desc'

@@ -1,0 +1,20 @@
+table thead tr th {
+  cursor: pointer;
+  min-width: 100px;
+}
+.sort-desc:after {
+  content: '';
+  display: inline-block;
+  margin-left: 10px;
+  border: 6px solid transparent;
+  border-top: 6px solid black;
+  vertical-align: bottom;
+}
+.sort-asc:after {
+  content: '';
+  display: inline-block;
+  margin-left: 10px;
+  border: 6px solid transparent;
+  border-bottom: 6px solid black;
+  vertical-align: text-top;
+}
