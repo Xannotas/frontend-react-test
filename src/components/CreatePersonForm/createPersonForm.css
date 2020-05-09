@@ -1,0 +1,9 @@
+.form-create-person {
+  display: flex;
+}
+.form-create-person input:first-child {
+  width: 100px;
+}
+.form-create-person input {
+  margin: 0 5px !important
+}

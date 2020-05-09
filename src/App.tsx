@@ -3,28 +3,31 @@ import axios from 'axios'
 import 'materialize-css/dist/css/materialize.min.css'
 
 import './App.css'
-import { Person, Column, SortType } from './types';
-import { chunk, sort, findIndexById } from './helpers'
+import { Person, Column, SortType, PersonData } from './types';
+import { chunk, sort, findIndexById, formatPhone } from './helpers'
 
 import Table from './components/Table';
 import ModeSelector from './components/ModeSelector';
 import Preloader from './components/Preloader';
 import Pagination from './components/Pagination'
 import PersonDescription from './components/PersonDescription';
+import CreatePersonForm from './components/CreatePersonForm';
 
 const App: React.FC = () => {
   const pageSize = 10
 
   const [persons, setPersons] = useState<Person[]>([])
-  const [activePerson, setActivePerson] = useState<Person|null>(null)
-  
+  const [activePerson, setActivePerson] = useState<Person | null>(null)
+
   const [isModeSelected, setIsModeSelected] = useState<boolean>(false)
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isShowForm, setIsShowForm] = useState<boolean>(false)
+
   const [pageId, setPageId] = useState<number>(0)
   const [sortedColomnKey, setSortedColumnKey] = useState<Column>('id')
   const [sortType, setSortType] = useState<SortType>('asc')
   const displayPersons: Person[] = persons.length > pageSize ? chunk(persons, pageSize)[pageId] : persons
-  
+
   const handleModeSelected = async (url: string) => {
     setIsLoading(true)
     setIsModeSelected(true)
@@ -59,6 +62,25 @@ const App: React.FC = () => {
     setActivePerson(persons[findIndexById(persons, personId)])
   }
 
+  const handlePersonCreate = (personData: PersonData) => {
+    const createdPerson: Person = {
+      ...personData,
+      phone: formatPhone(personData.phone),
+      address: {
+        streetAddress: '',
+        zip: '',
+        city: '',
+        state: ''
+      },
+      description: ''
+    }
+    setPersons([createdPerson, ...persons])
+  }
+
+  const handleOpenForm = () => {
+    setIsShowForm(!isShowForm)
+  }
+
   return (
     <div className="App">
       <div className="container">
@@ -72,12 +94,18 @@ const App: React.FC = () => {
         }
 
         {persons.length > 0 &&
-          <Table persons={displayPersons}
-            onSort={handleSortTable}
-            sortType={sortType}
-            sortedColomnKey={sortedColomnKey}
-            onPersonSelected={handlePersonSelected}
-          />
+          <>
+            {isShowForm
+              ? <CreatePersonForm onPersonCreate={handlePersonCreate} />
+              : <button className='btn green right' onClick={handleOpenForm}>Добавить</button>
+            }
+            <Table persons={displayPersons}
+              onSort={handleSortTable}
+              sortType={sortType}
+              sortedColomnKey={sortedColomnKey}
+              onPersonSelected={handlePersonSelected}
+            />
+          </>
         }
 
         {persons.length > pageSize &&

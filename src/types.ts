@@ -1,9 +1,12 @@
-export type Person = {
+export type PersonData = {
   id: number,
   firstName: string,
   lastName: string,
   email: string,
-  phone: string,
+  phone: string
+}
+
+export type Person = PersonData & {
   address: {
     streetAddress: string,
     city: string,

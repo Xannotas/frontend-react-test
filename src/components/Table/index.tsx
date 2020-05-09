@@ -12,21 +12,21 @@ type Props = {
   onPersonSelected: (personId: number) => void
 }
 
-const Table: React.FC<Props> = ({ persons, onSort, sortType, sortedColomnKey, onPersonSelected}) => {
+const Table: React.FC<Props> = ({ persons, onSort, sortType, sortedColomnKey, onPersonSelected }) => {
   return (
     <table className='highlight responsive-table'>
       <thead>
         <tr>
-          <th className={sortedColomnKey === 'id' ? 'sort-'+sortType : ''} onClick={() => onSort('id')}>Id</th>
-          <th className={sortedColomnKey === 'firstName' ? 'sort-'+sortType : ''} onClick={() => onSort('firstName')}>First Name</th>
-          <th className={sortedColomnKey === 'lastName' ? 'sort-'+sortType : ''} onClick={() => onSort('lastName')}>Last Name</th>
-          <th className={sortedColomnKey === 'email' ? 'sort-'+sortType : ''} onClick={() => onSort('email')}>Email</th>
-          <th className={sortedColomnKey === 'phone' ? 'sort-'+sortType : ''} onClick={() => onSort('phone')}>Phone</th>
+          <th className={sortedColomnKey === 'id' ? 'sort-' + sortType : ''} onClick={() => onSort('id')}>Id</th>
+          <th className={sortedColomnKey === 'firstName' ? 'sort-' + sortType : ''} onClick={() => onSort('firstName')}>First Name</th>
+          <th className={sortedColomnKey === 'lastName' ? 'sort-' + sortType : ''} onClick={() => onSort('lastName')}>Last Name</th>
+          <th className={sortedColomnKey === 'email' ? 'sort-' + sortType : ''} onClick={() => onSort('email')}>Email</th>
+          <th className={sortedColomnKey === 'phone' ? 'sort-' + sortType : ''} onClick={() => onSort('phone')}>Phone</th>
         </tr>
       </thead>
       <tbody>
         {persons &&
-          persons.map(person => <TableItem key={person.id + person.phone} onPersonSelected={onPersonSelected} person={person}/>)
+          persons.map(person => <TableItem key={person.id + person.phone} onPersonSelected={onPersonSelected} person={person} />)
         }
       </tbody>
     </table>
