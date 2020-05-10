@@ -1,9 +1,27 @@
 .form-create-person {
   display: flex;
 }
+
 .form-create-person input:first-child {
   width: 100px;
 }
+
 .form-create-person input {
   margin: 0 5px !important
+}
+
+.form-create-person__btn-toggle {
+  text-align: right;
+}
+
+@media (max-width: 700px) {
+  .form-create-person {
+    flex-direction: column;
+  }
+  .form-create-person input{
+    width: 100% !important;
+  }
+  .form-create-person button{
+    margin: 20px 0;
+  }
 }

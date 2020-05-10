@@ -107,7 +107,9 @@ const App: React.FC = () => {
             <Search onSearch={handleSearch} />
             {isShowForm
               ? <CreatePersonForm onPersonCreate={handlePersonCreate} />
-              : <button className='btn green right' onClick={handleOpenForm}>Добавить</button>
+              : <div className='form-create-person__btn-toggle'>
+                <button className='btn green' onClick={handleOpenForm}>Добавить</button>
+              </div>
             }
             <Table persons={displayPersons}
               onSort={handleSortTable}
