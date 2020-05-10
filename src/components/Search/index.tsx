@@ -15,8 +15,8 @@ const Search: React.FC<Props> = ({ onSearch }) => {
 
   return (
     <div className='search'>
-      <button className='btn' onClick={handleSearch}>Search</button>
-      <Input value={searchValue} setValue={setSearchValue} placeholder='Search' />
+      <button className='btn' onClick={handleSearch}>Поиск</button>
+      <Input value={searchValue} setValue={setSearchValue} placeholder='Поиск' />
     </div>
   )
 }

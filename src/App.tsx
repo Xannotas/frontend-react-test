@@ -118,7 +118,7 @@ const App: React.FC = () => {
           </>
         }
 
-        {persons.length > pageSize &&
+        {filteredPersons.length > pageSize &&
           <Pagination
             pageCount={Math.ceil(filteredPersons.length / pageSize)}
             currentPageId={pageId}
