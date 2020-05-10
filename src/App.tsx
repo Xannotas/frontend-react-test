@@ -4,7 +4,7 @@ import 'materialize-css/dist/css/materialize.min.css'
 
 import './App.css'
 import { Person, Column, SortType, PersonData } from './types';
-import { chunk, sort, findIndexById, formatPhone } from './helpers'
+import { chunk, sort, findIndexById, formatPhone, filterPersons } from './helpers'
 
 import Table from './components/Table';
 import ModeSelector from './components/ModeSelector';
@@ -12,6 +12,7 @@ import Preloader from './components/Preloader';
 import Pagination from './components/Pagination'
 import PersonDescription from './components/PersonDescription';
 import CreatePersonForm from './components/CreatePersonForm';
+import Search from './components/Search';
 
 const App: React.FC = () => {
   const pageSize = 10
@@ -26,7 +27,10 @@ const App: React.FC = () => {
   const [pageId, setPageId] = useState<number>(0)
   const [sortedColomnKey, setSortedColumnKey] = useState<Column>('id')
   const [sortType, setSortType] = useState<SortType>('asc')
-  const displayPersons: Person[] = persons.length > pageSize ? chunk(persons, pageSize)[pageId] : persons
+  const [searchValue, setSearchValue] = useState<string>('')
+
+  const filteredPersons = filterPersons(persons, searchValue)
+  const displayPersons: Person[] = persons.length > pageSize ? chunk(filteredPersons, pageSize)[pageId] : filteredPersons
 
   const handleModeSelected = async (url: string) => {
     setIsLoading(true)
@@ -81,6 +85,11 @@ const App: React.FC = () => {
     setIsShowForm(!isShowForm)
   }
 
+  const handleSearch = (searchValue: string) => {
+    setSearchValue(searchValue)
+    setPageId(0)
+  }
+
   return (
     <div className="App">
       <div className="container">
@@ -95,6 +104,7 @@ const App: React.FC = () => {
 
         {persons.length > 0 &&
           <>
+            <Search onSearch={handleSearch} />
             {isShowForm
               ? <CreatePersonForm onPersonCreate={handlePersonCreate} />
               : <button className='btn green right' onClick={handleOpenForm}>Добавить</button>
@@ -110,7 +120,7 @@ const App: React.FC = () => {
 
         {persons.length > pageSize &&
           <Pagination
-            pageCount={Math.ceil(persons.length / pageSize)}
+            pageCount={Math.ceil(filteredPersons.length / pageSize)}
             currentPageId={pageId}
             displayPages={6}
             onPageChanged={handlePageChanged}
