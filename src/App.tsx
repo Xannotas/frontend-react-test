@@ -3,6 +3,7 @@ import axios from 'axios'
 import 'materialize-css/dist/css/materialize.min.css'
 
 import './App.css'
+import fakeData from './assets/fake-data.json'
 import { Person, Column, SortType, PersonData } from './types';
 import { chunk, sort, findIndexById, formatPhone, filterPersons } from './helpers'
 
@@ -40,9 +41,9 @@ const App: React.FC = () => {
       setPersons(sortedPersons)
       setIsLoading(false)
     }).catch(() => {
-      alert('Не удалось загрузить данные')
+      alert('Не удалось загрузить данные с сервера, пришлось использовать фэйковые')
+      setPersons(sort(fakeData, sortedColomnKey))
       setIsLoading(false)
-      setIsModeSelected(false)
     })
   }
 
