@@ -9,7 +9,13 @@ export const chunk = (array: any[], size: number) => {
 }
 
 export const sort = (array: any[], key: Column) => {
-  return [...array].sort((a, b) => a[key] < b[key] ? -1 : a[key] > b[key] ? 1 : 0)
+  const sorted = [...array].sort((a, b) => {
+    const prevItem = String(a[key]).toLowerCase()
+    const nextItem = String(b[key]).toLowerCase()
+    return prevItem < nextItem ? -1 : prevItem > nextItem ? 1 : 0
+  })
+
+  return sorted
 }
 
 export const findIndexById = (array: any[], id: number) => {
