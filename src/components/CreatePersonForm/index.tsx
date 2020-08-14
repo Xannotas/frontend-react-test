@@ -19,45 +19,72 @@ const CreatePersonForm: React.FC<Props> = ({ onPersonCreate }) => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+
     const personData: PersonData = {
       id: Number(id),
       firstName,
       lastName,
       email,
-      phone
+      phone,
     }
+    clearForm()
+    onPersonCreate(personData)
+  }
+
+  const clearForm = () => {
     setId('')
     setFirstName('')
     setLastName('')
     setEmail('')
     setPhone('')
-
-    onPersonCreate(personData)
   }
 
   const checkValidForm = () => {
-    const valid: boolean = id &&
-      firstName.trim() &&
-      lastName.trim() &&
-      email.trim() &&
-      parseInt(phone) &&
-      phone.length === phoneLenght ? true : false
+    const valid: boolean =
+      id.trim().length > 0 &&
+      firstName.trim().length > 0 &&
+      lastName.trim().length > 0 &&
+      email.trim().length > 0 &&
+      phone.replace(/[^\d]/gi, '').length === phoneLenght
+
     setIsFormValid(valid)
   }
 
   useEffect(() => {
     checkValidForm()
-  }, [id, firstName, lastName, email, phone])
+  }, [id, firstName, lastName, email, phone]) // eslint-disable-line
 
   return (
     <form onSubmit={handleSubmit} className='form-create-person'>
-      <Input value={id} setValue={setId} placeholder='Id' type='number' />
-      <Input value={firstName} setValue={setFirstName} placeholder='First name' />
+      <Input
+        value={id}
+        setValue={setId}
+        placeholder='Id'
+        contentType='number'
+      />
+      <Input
+        value={firstName}
+        setValue={setFirstName}
+        placeholder='First name'
+      />
       <Input value={lastName} setValue={setLastName} placeholder='Last name' />
-      <Input value={email} setValue={setEmail} placeholder='Email' type='email' />
-      <Input value={phone} setValue={setPhone} placeholder='Phone' maxLenght={10} />
+      <Input
+        value={email}
+        setValue={setEmail}
+        placeholder='Email'
+        type='email'
+      />
+      <Input
+        value={phone}
+        setValue={setPhone}
+        placeholder='Phone'
+        maxLenght={10}
+        contentType='number'
+      />
 
-      <button className="btn green" disabled={!isFormValid} type='submit'>Добавить</button>
+      <button className='btn green' disabled={!isFormValid} type='submit'>
+        Добавить
+      </button>
     </form>
   )
 }
